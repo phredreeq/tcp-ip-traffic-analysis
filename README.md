@@ -1,19 +1,19 @@
-# 🔗 TCP/IP Traffic Analysis Using Wireshark
+# TCP/IP Traffic Analysis Using Wireshark
 ## Capturing and Analyzing Real TCP Handshakes
 
 ---
 
-## 📌 Overview
+## Overview
 Understanding TCP/IP is fundamental to SOC analysis.
-Every attack — brute force, port scanning, session 
-hijacking — uses TCP/IP. This project captures and 
+Every attack(brute force, port scanning, session 
+hijacking) uses TCP/IP. This project captures and 
 analyzes real TCP handshakes between Kali Linux and 
 a live server to demonstrate how connections are 
 established and what analysts look for in traffic.
 
 ---
 
-## 🎯 Objectives
+## Objectives
 - Generate real TCP traffic using curl
 - Capture live TCP handshakes in Wireshark
 - Identify and analyze SYN, SYN-ACK and ACK packets
@@ -22,7 +22,7 @@ established and what analysts look for in traffic.
 
 ---
 
-## 🛠️ Tools Used
+## Tools Used
 | Tool | Purpose |
 |---|---|
 | **Wireshark** | Network packet capture and analysis |
@@ -32,11 +32,11 @@ established and what analysts look for in traffic.
 
 ---
 
-## 🧠 TCP/IP Background
+## TCP/IP Background
 
 ### What is TCP?
 TCP (Transmission Control Protocol) is a connection
-oriented protocol — it establishes a connection 
+oriented protocol. It establishes a connection 
 before sending any data and confirms delivery.
 
 ### The 3-Way Handshake
@@ -49,7 +49,7 @@ Step 2 — SYN-ACK
 Server responds accepting connection and acknowledges
 
 Step 3 — ACK
-Client confirms — connection established
+Client confirms, that means connection established
 
 ### TCP Flags Reference
 | Flag | Meaning | When you see it |
@@ -63,7 +63,7 @@ Client confirms — connection established
 
 ---
 
-## 🔬 Methodology
+## Methodology
 
 ### Step 1 — Start Wireshark Capture
 Started Wireshark on eth0 interface on Kali Linux
@@ -85,7 +85,7 @@ tcp.flags.syn == 1 or tcp.flags.fin == 1
 
 ---
 
-## 📸 Results
+## Results
 
 ### All TCP Traffic Filtered
 
@@ -124,7 +124,7 @@ tcp.flags.syn == 1 or tcp.flags.fin == 1
 
 ---
 
-## 🧠 Analysis
+## Analysis
 
 ### Finding 1 — 3-Way Handshake Confirmed
 The complete TCP handshake was captured:
@@ -151,18 +151,17 @@ ACK:     Seq=1 Ack=1
 
 Sequence numbers track data delivery and order.
 This is what session hijacking attacks try to
-predict — guessing the next sequence number to
+predict. They try guessing the next sequence number to
 take over an active connection.
 
 ### Finding 4 — Encryption Identified
-Traffic used TLSv1.3 over TCP port 443 —
-the connection was encrypted with the latest
+Traffic used TLSv1.3 over TCP port 443, this means that the connection was encrypted with the latest
 TLS standard. An attacker intercepting this
 traffic would see only encrypted data.
 
 ---
 
-## 🔐 Security Relevance
+## Security Relevance
 
 ### How Attackers Abuse TCP
 
@@ -182,7 +181,7 @@ traffic would see only encrypted data.
 
 ---
 
-## ✅ Conclusion
+## Conclusion
 Successfully captured and analyzed a real TCP
 3-way handshake between Kali Linux and Google.
 Understanding TCP handshakes is fundamental to:
@@ -202,5 +201,5 @@ Understanding TCP handshakes is fundamental to:
 
 ## 👤 Author
 Fredrick Agufenwa
+
 Cybersecurity Student | SOC & Threat Detection
-#50DaysOfCybersecurity
